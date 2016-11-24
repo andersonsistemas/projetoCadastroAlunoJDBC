@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value = "/cadastroUsuarioJdbc")
-public class CadastroUsuarioJdbcController extends HttpServlet {
+@WebServlet(value = "/cadastroAlunoJdbc")
+public class CadastroAlunoJdbcController extends HttpServlet {
 
   @Override
   protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,29 +19,29 @@ public class CadastroUsuarioJdbcController extends HttpServlet {
     String op = req.getParameter("op");
     op = (op == null ? "Iniciar" : op);
     
-    Usuario usuario = new Usuario();
-    usuario.setCodigo(req.getParameter("codigo"));
-    usuario.setNome(req.getParameter("nome"));
-    usuario.setSenha(req.getParameter("senha"));
+    Aluno aluno = new Aluno();
+    aluno.setMatricula(req.getParameter("matricula"));
+    aluno.setNome(req.getParameter("nome"));
+    aluno.setCurso(req.getParameter("curso"));
 
-    List<Usuario> usuarios = null;
+    List<Aluno> alunos = null;
     try {
       if (op.equals("Salvar")) {
-        CadastroUsuarioJdbcModel.salvar(usuario);
+        CadastroAlunoJdbcModel.salvar(aluno);
       } else if (op.equals("Excluir")) {
-        CadastroUsuarioJdbcModel.excluir(usuario);
+        CadastroAlunoJdbcModel.excluir(aluno);
       }
 
-      usuarios = CadastroUsuarioJdbcModel.listar();
+      alunos = CadastroAlunoJdbcModel.listar();
 
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
     
-    req.setAttribute("usuarios", usuarios);
+    req.setAttribute("alunos", alunos);
 
     //Chamando o JSP.
-    String nextJsp = "/cadastro-usuario-jdbc.jsp";
+    String nextJsp = "/cadastro-aluno-jdbc.jsp";
     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJsp);
     dispatcher.forward(req, resp);
 
