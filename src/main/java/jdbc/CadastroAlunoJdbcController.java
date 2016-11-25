@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value = "/cadastroAlunoJdbc")
+@WebServlet(value = "/cadastroAlunoJpa")
 public class CadastroAlunoJdbcController extends HttpServlet {
 
   @Override

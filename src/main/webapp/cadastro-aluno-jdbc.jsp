@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@page import="jdbc.Usuario"%>
+<%@page import="jdbc.Aluno"%>
 <%@page import="java.util.List"%>
 <html>
 <head>

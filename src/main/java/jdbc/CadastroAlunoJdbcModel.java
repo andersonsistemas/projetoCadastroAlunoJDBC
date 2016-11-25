@@ -14,8 +14,8 @@ public class CadastroAlunoJdbcModel {
   private static Connection obterConexao() throws SQLException {
     //Estabelecer uma conexão com o banco de dados.
     String url = "jdbc:mysql://localhost:3306/pw";
-    String user = "pwuser";
-    String password = "12345678";
+    String user = "root";
+    String password = "root";
     Connection conn = DriverManager
         .getConnection(url, user, password);
     return conn;
